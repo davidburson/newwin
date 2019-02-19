@@ -1,0 +1,75 @@
+{
+  "name": "newwin",
+  "version": "0.0.1",
+  "preferGlobal": true,
+  "main": "index.js",
+  "build": {
+    "electronVersion": "4.0.4",
+    "appId": "com.fmosoft.newwin",
+    "productName": "NewWin",
+    "copyright": "Copyright © 2019 by fmosoft",
+    "directories": {
+      "app": "build",
+      "output": "build-native"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "public/images/newwin.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.other",
+      "icon": "public/images/newwin.icns"
+    },
+    "linux": {
+      "target": "deb",
+      "icon": "./public/images/linux-icons/",
+      "synopsis": "NewWin - Copyright 2019 by fmosoft.",
+      "description": "NewWin - Copyright 2019 by fmosoft.",
+      "category": "Other",
+      "desktop": {
+        "Name": "NewWin"
+      }
+    }
+  },
+  "browserslist": [
+    "Node 10.15",
+    "Electron 4.0"
+  ],
+  "scripts": {
+    "start": "cd build && electron .",
+    "start-debug-main": "cd build && electron --inspect-brk=5858 .",
+    "build": "node doBuild.js && cd build && yarn install --production && cd .. && babel src --out-dir build",
+    "copy": "node copy.js",
+    "watch": "babel src --watch --out-dir build",
+    "build-native": "electron-builder --dir",
+    "pack-native": "electron-builder",
+    "complete-build": "yarn install && node empty-build-folders.js && npm run build && npm run pack-native"
+  },
+  "dependencies": {
+    "colors": "^1.3.3",
+    "fs-extra": "^7.0.1",
+    "lodash": "^4.17.11",
+    "rmrf-promise": "^1.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "electron": "^4.0.5",
+    "electron-builder": "^20.38.5",
+    "eslint": "^5.13.0",
+    "eslint-plugin-react": "^7.12.4",
+    "nodemon": "^1.18.10"
+  }
+}

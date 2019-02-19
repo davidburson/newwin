@@ -1,0 +1,32 @@
+import React from 'react';
+import propTypes from 'prop-types';
+import { ipcRenderer, remote } from 'electron';
+
+//const NewWin = ({ Localize }) => {
+//class NewWin extends React.PureComponent {
+class NewWin extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+
+        };
+    }
+
+    render() {
+        const { Localize } = this.props;
+        const {  } = this.state;
+
+        return (
+            <div className="container-fluid">
+
+            </div>
+        );
+    }
+}
+
+NewWin.propTypes = {
+    Localize: propTypes.object,
+};
+
+export default NewWin;
