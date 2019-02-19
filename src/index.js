@@ -30,9 +30,9 @@ app.on('ready', () => {
         };
 
 
-        insertWindowName(path.join(__dirname, 'win-files', 'win.html.txt'), path.join(process.cwd(), 'public', 'win.html'));
-        insertWindowName(path.join(__dirname, 'win-files', 'win.js.txt'), path.join(process.cwd(), 'src', 'win.js'));
-        insertWindowName(path.join(__dirname, 'win-files', 'win.jsx.txt'), path.join(process.cwd(), 'src', 'components', 'win.jsx'));
+        insertWindowName(path.join(__dirname, 'win-files', 'win.html.txt'), path.join(process.cwd(), 'public', `${winName}.html`));
+        insertWindowName(path.join(__dirname, 'win-files', 'win.js.txt'), path.join(process.cwd(), 'src', `${winName}.js`));
+        insertWindowName(path.join(__dirname, 'win-files', 'win.jsx.txt'), path.join(process.cwd(), 'src', 'components', `${winName}.jsx`));
 
         console.log('done NewWin', winName);
         app.quit();
