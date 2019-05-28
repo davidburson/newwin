@@ -1,28 +1,59 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import { ipcRenderer, remote } from 'electron';
 
-//const NewWin = ({ Localize }) => {
+// React Hook to respond to window size changes
+const useWindowSize = () => {
+    const [winSize, setWinSize] = useState([window.innerWidth, window.innerHeight]);
+
+    useEffect(() => {
+        const handleResize = () => setWinSize([window.innerWidth, window.innerHeight]);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    });
+
+    return winSize;
+};
+
+// Component
 //class NewWin extends React.PureComponent {
-class NewWin extends React.Component {
-    constructor(props) {
-        super(props);
+//class NewWin extends React.Component {
+//    constructor(props) {
+//        super(props);
+//
+//        this.state = {
+//
+//        };
+//    }
+//
+//    render() {
+//        const { Localize } = this.props;
+//        const {  } = this.state;
+//
+//        const styles = {
+//
+//        }
+//
+//        return (
+//            <div className="container-fluid">
+//
+//            </div>
+//        );
+//    }
 
-        this.state = {
+// function
+const NewWin = ({ Localize }) => {
+    const [winWidth, winHeight] = useWindowSize();
 
-        };
+    const styles = {
+
     }
 
-    render() {
-        const { Localize } = this.props;
-        const {  } = this.state;
+    return (
+        <div className="container-fluid">
 
-        return (
-            <div className="container-fluid">
-
-            </div>
-        );
-    }
+        </div>
+    );
 }
 
 NewWin.propTypes = {
